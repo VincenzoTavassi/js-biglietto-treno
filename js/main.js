@@ -6,13 +6,15 @@
 // L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
 
-// CHIEDO NUMERO DI CHILOMETRI DA PERCORRERE
+// CHIEDO NUMERO DI CHILOMETRI DA PERCORRERE ED ETA' PASSEGGERO
 const chilometri = parseInt(prompt('Quanti chilometri vuoi percorrere?'));
-// CHIEDO ETA' PASSEGGERO
 const etaPasseggero = parseInt(prompt('Quanti anni hai?'));
 
-// CALCOLO IL PREZZO € 0.21 per km e impongo massimo due decimali
-let prezzoStandard = parseFloat(0.21 * chilometri).toFixed(2);
+// IMPOSTO UNA TARIFFA FISSA - es. € 0.21
+const tariffa = 0.21;
+
+// CALCOLO IL PREZZO es. € 0.21 per km e impongo massimo due decimali
+let prezzoStandard = parseFloat(tariffa * chilometri).toFixed(2);
 
 // SE PASSEGGERO E' MINORENNE APPLICO SCONTO DEL 20% con massimo due decimali
 if (etaPasseggero < 18) {
@@ -28,5 +30,3 @@ else if (etaPasseggero > 65) {
 else {
     document.getElementById('prezzo-biglietto').innerHTML = 'Il prezzo standard è € ' + prezzoStandard;
 }
-
-// document.getElementById('prezzo-biglietto').innerHTML = 'Il prezzo standard è €', prezzoStandard;
