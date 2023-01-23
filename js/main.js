@@ -11,20 +11,22 @@ const chilometri = parseInt(prompt('Quanti chilometri vuoi percorrere?'));
 // CHIEDO ETA' PASSEGGERO
 const etaPasseggero = parseInt(prompt('Quanti anni hai?'));
 
-// CALCOLO IL PREZZO 0.21 per km
-let prezzoStandard = parseFloat(0.21 * chilometri);
+// CALCOLO IL PREZZO € 0.21 per km e impongo massimo due decimali
+let prezzoStandard = parseFloat(0.21 * chilometri).toFixed(2);
 
-// SE PASSEGGERO E' MINORENNE APPLICO SCONTO DEL 20% 
+// SE PASSEGGERO E' MINORENNE APPLICO SCONTO DEL 20% con massimo due decimali
 if (etaPasseggero < 18) {
     let scontoMinorenni = parseFloat(prezzoStandard - ((prezzoStandard * 20) / 100)).toFixed(2);
-    console.log('il prezzo riservato ai minorenni è ', scontoMinorenni);
+    document.getElementById('prezzo-biglietto').innerHTML = 'Il prezzo riservato ai minorenni è € ' + scontoMinorenni;
 }
-// SE IL PASSEGGERO E' OVER 65 APPLICO SCONTO DEL 40% 
+// SE IL PASSEGGERO E' OVER 65 APPLICO SCONTO DEL 40% con massimo due decimali
 else if (etaPasseggero > 65) {
-    let scontoSenior = prezzoStandard - ((prezzoStandard * 40) / 100);
-    console.log('il prezzo riservato agli over 65 è ', scontoSenior);
+    let scontoSenior = parseFloat(prezzoStandard - ((prezzoStandard * 40) / 100)).toFixed(2);
+    document.getElementById('prezzo-biglietto').innerHTML = 'Il prezzo riservato agli over 65 è € ' + scontoSenior;
 }
 // ALTRIMENTI APPLICO IL PREZZO STANDARD 
 else {
-    console.log('il prezzo standard è ', prezzoStandard);
+    document.getElementById('prezzo-biglietto').innerHTML = 'Il prezzo standard è € ' + prezzoStandard;
 }
+
+// document.getElementById('prezzo-biglietto').innerHTML = 'Il prezzo standard è €', prezzoStandard;
